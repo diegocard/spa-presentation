@@ -1,7 +1,7 @@
 Presentation on Single Page Applications
 ================
 
-This presentation was prepared for a .NET Meetup in Uruguay.
+This presentation was created for a .NET Meetup in Uruguay.
 
 Contents
 ---------
