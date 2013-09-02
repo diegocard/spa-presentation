@@ -1,7 +1,17 @@
 Presentation on Single Page Applications
 ================
 
-Presentation on how to build a Single Page Application
+This presentation was prepared for a .NET Meetup in Uruguay.
+
+Contents:
+1. Motivation
+2. Introduction
+3. Examples
+4. Architecture
+5. Examples
+6. Advantages and disadvantages
+7. Tools and libraries
+8. Live coding
 
 - [View](https://slid.es/diegocard/single-page-applications) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/spa-25806613) on Slideshare
