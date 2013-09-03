@@ -17,9 +17,9 @@ Contents
 - [View](https://slid.es/diegocard/single-page-applications) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/spa-25806613) on Slideshare
 
-Live coding source
+Demo
 ---------
-- [Here](https://github.com/diegocard/SPA-Demo)
+- [Here](https://github.com/diegocard/PluralsightSpaJumpStartFinal)
 
 Built using
 ---------
