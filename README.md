@@ -12,7 +12,7 @@ Contents
  5. Examples
  6. Advantages and disadvantages
  7. Tools and libraries
- 8. Live coding
+ 8. Demo
 
 - [View](https://slid.es/diegocard/single-page-applications) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/spa-25806613) on Slideshare
