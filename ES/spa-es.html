@@ -10,6 +10,10 @@
     <title>Single Page Applications: Diego Cardozo</title>
     <link rel="stylesheet" href="../media/css/styles.min.css">
     <link rel="stylesheet" href="../media/css/fonts.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write( '<link rel="stylesheet" href="../media/css/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
 </head>
 <body>
     <div class="reveal">

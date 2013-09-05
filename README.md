@@ -1,7 +1,7 @@
 Presentation on Single Page Applications
 ================
 
-This presentation was created for a .NET Meetup in Uruguay.
+This presentation was created for a .NET Meetup in Uruguay. To view a printable PDF version of the slides, open them in chrome and add ?print-pdf#/ to the URL.
 
 Contents
 ---------
