@@ -3,7 +3,7 @@ Presentation on Single Page Applications
 
 This presentation was created for a .NET Meetup in Uruguay. 
 
-To view a printable PDF version of the slides, open them in chrome and add ?print-pdf#/ to the URL.
+To view a printable PDF version of the slides, open them in chrome and add ?print-pdf/#/ to the URL.
 
 Contents
 ---------
@@ -16,6 +16,13 @@ Contents
  7. Tools and libraries
  8. Demo
 
+English
+---------
+- [View](http://slid.es/diegocard/single-page-applications-en) on Slid.es (press spacebar to change slides)
+- [View](http://www.slideshare.net/dcslides/single-page-applications-english) on Slideshare
+
+Spanish
+---------
 - [View](https://slid.es/diegocard/single-page-applications) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/spa-25806613) on Slideshare
 
