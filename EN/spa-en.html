@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html class="decks present loaded reveal-viewport theme-font-news theme-color-sky-blue">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Slides">
+    <meta content="authenticity_token" name="csrf-param" />
+    <meta content="y+Y+gLaBLsfyTuP3+AoZUAVjdEiPGTCGD0mzUsIJjbQ=" name="csrf-token" />
+    <title>Single Page Applications: Diego Cardozo</title>
+    <link rel="stylesheet" href="../media/css/styles.min.css">
+    <link rel="stylesheet" href="../media/css/fonts.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="../media/css/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Single Page Applications</h1>
+                <br>
+                <br>
+                <h2>Diego Cardozo</h2>
+                <a href="http://www.github.com/diegocard/SPA-Presentation">github.com/diegocard/SPA-Presentation</a>
+            </section>
+            <section>
+                <h2>Agenda</h2>
+                <br>
+                <ol>
+                    <li>
+                        <p>Motivation</p>
+                    </li>
+                    <li>
+                        <p>Introduction</p>
+                    </li>
+                    <li>
+                        <p>Examples</p>
+                    </li>
+                    <li>
+                        <p>Architecture</p>
+                    </li>
+                    <li>
+                        <p>Advantages and disadvantages</p>
+                    </li>
+                    <li>
+                        <p>Tools</p>
+                    </li>
+                    <li>
+                        <p>Demo</p>
+                    </li>
+                </ol>
+            </section>
+            <section>
+                <h2>Motivation (1)</h2>
+                <br>
+                <p><b><i>One of the main aspects that influence user </i></b></p>
+                <p><b><i>experience is load time.</i></b></p>
+                <br>
+                <ul>
+                    <li>We use many techniquest to make it quicker:</li>
+                    <ul>
+                        <li>
+                            <p>Minimize scripts and CSS</p>
+                        </li>
+                        <li>
+                            <p>Combine images in a single sprite</p>
+                        </li>
+                        <li>
+                            <p>Delay JavaScript execution</p>
+                        </li>
+                        <li>
+                            <p>Handle static files separately (CDN)</p>
+                        </li>
+                        <li>
+                            <p>Resource cache</p>
+                        </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h2>Motivation (2)</h2>
+                <br>
+                <p>
+                    <b>
+                        <i>However, even with cache the browser must:</i>
+                    </b>
+                </p>
+                <br>
+                <ul>
+                    <li>
+                        <p>Re-parse and execute CSS and JavaScript code.</p>
+                    </li>
+                    <li>
+                        <p>Download and parse the whole page HTML.</p>
+                    </li>
+                    <ul>
+                        <li>
+                            <p>Even when only a little part changed.</p>
+                        </li>
+                    </ul>
+                    <li>
+                        <p>Rebuild the DOM tree.</p>
+                    </li>
+                    <li>
+                        <p>Render the UI.</p>
+                    </li>
+                    <li>The user sees the page being constructed as he waits.</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>Motivation (3)</h2>
+                    <br>
+                    <p><b><i>To sum up, SPA is an answer to the following questions:</i></b></p>
+                    <br>
+                    <div>
+                        <ul>
+                            <li>
+                                <p>¿How can we achieve a more efficient behavior?</p>
+                            </li>
+                            <li>
+                                <p>¿Can we only load what's new or necessary?</p>
+                            </li>
+                            <li>¿How can we improve user experience?</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h2>Introduction (1)</h2>
+                    <br>
+                    <p>
+                        <b><i>What is a SPA?</i>
+                        </b>
+                    </p>
+                    <br>
+                    <ul>
+                        <li>
+                            <p>It is a new approach to building web applications.</p>
+                        </li>
+                        <li>
+                            <p>The whole source code is either loaded initially or afterwards dynamically, without reloading the page.</p>
+                        </li>
+                        <li>
+                            <p>Navigation is resolved on the client side.</p>
+                        </li>
+                        <li>
+                            <p>Server calls are done asynchronously. </p>
+                        </li>
+                        <li>UI is built on the client side.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h2>Introduction (2)</h2>
+                <br>
+                <p><b><i>What is NOT a SPA</i></b></p>
+                <br>
+                <ul>
+                    <li>
+                        <p>Join all webpages for the site and load them statically.</p>
+                    </li>
+                    <li>
+                        <p>Black or white, hybrid approaches do exist.</p>
+                    </li>
+                    <li>
+                        <p>A silver bullet: it might not be a good idea for some projects.</p>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>Introduction (3)</h2>
+                    <br>
+                    <p><b><i>What can a SPA do?</i></b></p>
+                    <br>
+                    <ul>
+                        <li>
+                            <p>Show URL changes and navigate forward and backward.</p>
+                        </li>
+                        <li>
+                            <p>Manipulate the DOM on the client side.</p>
+                        </li>
+                        <li>
+                            <p>Wait for the view to load before showing it.</p>
+                        </li>
+                        <li>
+                            <p>Store previously loaded pages on the client.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Examples</h2>
+                    <br>
+                    <ul>
+                        <li>
+                            <p>GMail</p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://stashy.azurewebsites.net/">Stashy</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="https://www.nogginator.com/">Nogginator</a>
+                            </p>
+                        </li>
+                        <li>This presentation</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Architecture</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <img src="../media/images/SPA_Architecture.png"><br>
+                    </div>
+                </section>
+                <section>
+                    <h3>Advantages and disadvantages (1)</h3>
+                    <br>
+                    <p>
+                        <b>
+                            <i>Advantages</i></b>
+                    </p>
+                    <br>
+                    <ul>
+                        <li>
+                            <p>Faster and slicker UI.</p>
+                        </li>
+                        <li>
+                            <p>Easier maintenance.</p>
+                        </li>
+                        <li>
+                            <p>Better load distribution.</p>
+                        </li>
+                        <li>
+                            <p>The beginning of the development process is faster.</p>
+                        </li>
+                        <li>
+                            <p>UI is simply another client.</p>
+                        </li>
+                        <li>
+                            <p>Great for testing.</p>
+                        </li>
+                        <li>Perfect approach to combine with mobile applications.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h3>Advantages and disadvantages (2)</h3>
+                <br>
+                <p>
+                    <b>
+                        <i>Disadvantages</i></b>
+                </p>
+                <br>
+                <ul>
+                    <li>
+                        <p>The initial load can be slow.</p>
+                    </li>
+                    <li>
+                        <p>SEO can become complex.</p>
+                    </li>
+                    <li>
+                        <p>Requires JavaScript to be enabled.</p>
+                    </li>
+                    <li>
+                        <p>Requires additional JavaScript knowledge.</p>
+                    </li>
+                    <li>Breaks analytics, ads and widgets conventions.</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h3>Advantages and disadvantages (3)</h3>
+                    <br>
+                    <p>
+                        <b>
+                            <i>Other aspects</i></b>
+                    </p>
+                    <br>
+                    <ul>
+                        <li>
+                            <p>We move non-critic business logic to the client.</p>
+                        </li>
+                        <li>
+                            <p>Our code used to be90% C#/VB and 10% JS.</p>
+                        </li>
+                        <li>
+                            <p>Now it will be 50/50.</p>
+                        </li>
+                    </ul>
+                    <br>
+                    <br>
+                    <p style="text-align: left;">This isn't necessarily an advantage or disadvantage, but we will need a different set of tools to maintain good practices. </p>
+                </section>
+                <section>
+                    <h2>Tools (1)</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <p><b><i>Client side development</i></b></p>
+                    <img src="../media/images/Tools.png" style="width: 929.333333545261px; height: 353.7309546177707px; max-height: none; max-width: none;"><br>
+                </section>
+            </section>
+            <section>
+                <h2><span style="font-size: 75.96px;">Tools (2)</span></h2>
+                <br>
+                <p style="font-size: 36.288230895996094px; font-style: normal; font-variant: normal;"><b><i>Knockout.js</i></b></p>
+                <br>
+                <ul style="font-size: 36.288230895996094px; font-style: normal; font-variant: normal;">
+                    <li>Created by Steve Anderson</li>
+                    <ul>
+                        <li>ASP.NET PM for Microsoft.</li>
+                    </ul>
+                    <br>
+                    <li>Uses MVVM, a design pattern created by John Smith</li>
+                    <ul>
+                        <li>Microsoft MVP for his work in WPF.</li>
+                    </ul>
+                    <br>
+                    <li>It can be even used when we are not developing SPA.</li>
+                    <li>Included with MVC's default templates.</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>Tools (3)</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <p>
+                        <b>
+                            <i>Server side development</i></b>
+                    </p>
+
+                    <br>
+                    <ul>
+                        <li>
+                            <p>En MVC, nuestros controladores pasan a ser ApiControllers para definir un API RESTful.</p>
+                        </li>
+                        <li>
+                            <p>Implementamos una sola vista (layout).</p>
+                        </li>
+                        <li>
+                            <p>No vamos a utilizar Razor para renderizar las vistas.</p>
+                        </li>
+                        <li>
+                            <p>Vamos a ver un template para Visual Studio que trae un proyecto pre-configurado para SPA (Hot Towel SPA).</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Demo (1)</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <p>
+                    </p>
+                    <ul>
+                        <li>Start from John Papa's Hot Towel SPA template</li>
+                        <br>
+                        <li>Tour through at Durandal's main components</li>
+                        <ul>
+                            <li>Analyzing each component in depth takes too long.</li>
+                        </ul>
+                        <br>
+                        <li>We take a look at how the RESTful API is implemented</li>
+                        <ul>
+                            <li>Exposes user data.</li>
+                        </ul>
+                        <br>
+                        <li>We add a new functionality (sessions).</li>
+                        <ul>
+                            <li>Tour through client code.</li>
+                            <li>Mention the most important libraries.</li>
+                        </ul>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>Demo</h1>
+                    <a href="http://www.github.com/diegocard/SPA-Demo">github.com/diegocard/SPA-Demo</a>
+                    <br>
+                    <br>
+                    <img src="../media/images/knockout.png" style="width: 431.55555576748316px; height: 115.72018534608445px; max-height: none; max-width: none;">
+                    <img src="../media/images/javascript.png" style="width: 118.20858979794522px; height: 116.2777779897054px; max-height: none; max-width: none;"><br>
+                    <img src="../media/images/breeze.png" style="width: 334.8117770265184px; height: 117.6666668785943px; max-height: none; max-width: none;">
+                    <img src="../media/images/dotnet.png" style="width: 169.20885867989898px; height: 160.72222243414984px; max-height: none; max-width: none;"><br>
+                </section>
+                <section>
+                    <h2>Resources</h2>
+                    <br>
+                    <ul>
+                        <li>
+                            <p><a href="http://learn.knockout.com/">learn.knockout.com</a><br>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://singlepageappbook.com/">singlepageappbook.com</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://todomvc.com/">todomvc.com</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://www.johnpapa.net/">johnpapa.net</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://www.slideshare.net/dcslides/spa-25806613">slideshare.net/dcslides/spa-25806613</a>
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>If you want to know more</h3>
+                    <div>
+                        <img src="../media/images/JSconf.png"><br>
+                    </div>
+                </section>
+                <section>
+                    <h2>
+                        <br>
+                    </h2>
+                    <h1>Questions?</h1>
+                </section>
+            </section>
+        </div>
+    </div>
+    <script>
+        var SLConfig = {
+            current_user: {
+                name: "",
+                username: "diegocard",
+                pro: true
+            },
+            deck: {
+                user: {
+                    name: "",
+                    username: "diegocard"
+                },
+                id: "72858",
+                slug: "single-page-applications-en",
+                title: "Single Page Applications",
+                description: "This presentation is about building Single Page Applications. It was written for a .NET Meetup in Uruguay, so it will also be targeted at Microsoft developers.",
+                access_token: "sqRvmE2KUxLzDtd766mkCqqA4D4r",
+                published: true,
+                transition: "default",
+                background_transition: "fade",
+                theme_font: "news",
+                theme_color: "sky-blue",
+                rolling_links: false,
+                should_loop: false,
+                center: false,
+                rtl: false
+            }
+        }
+    </script>
+    <script src="../media/scripts/reveal.min.js"></script>
+    <script src="../media/scripts/custom-reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            mouseWheel: false,
+
+            rollingLinks: false,
+            center: SLConfig.deck.center || false,
+            loop: SLConfig.deck.should_loop || false,
+            rtl: SLConfig.deck.rtl || false,
+
+            transition: SLConfig.deck.transition,
+            backgroundTransition: SLConfig.deck.background_transition
+        });
+
+        if (window.hljs) hljs.initHighlightingOnLoad();
+    </script>
+</body>
+</html>
