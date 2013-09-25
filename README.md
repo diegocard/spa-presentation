@@ -11,10 +11,9 @@ Contents
  2. Introduction
  3. Examples
  4. Architecture
- 5. Examples
- 6. Advantages and disadvantages
- 7. Tools and libraries
- 8. Demo
+ 5. Advantages and disadvantages
+ 6. Tools and libraries
+ 7. Demo
 
 English
 ---------
