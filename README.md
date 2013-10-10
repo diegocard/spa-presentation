@@ -17,11 +17,13 @@ Contents
 
 English
 ---------
+- [View](spa-presentation.herokuapp.com) hosted on Heroku (press spacebar to change slides)
 - [View](http://slid.es/diegocard/single-page-applications-en) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/single-page-applications-english) on Slideshare
 
 Spanish
 ---------
+- [View](http://spa-presentation.herokuapp.com/ES/spa-es.html) hosted on Heroku (press spacebar to change slides)
 - [View](https://slid.es/diegocard/single-page-applications) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/spa-25806613) on Slideshare
 
