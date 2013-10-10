@@ -17,7 +17,7 @@ Contents
 
 English
 ---------
-- [View](spa-presentation.herokuapp.com) hosted on Heroku (press spacebar to change slides)
+- [View](http://spa-presentation.herokuapp.com) hosted on Heroku (press spacebar to change slides)
 - [View](http://slid.es/diegocard/single-page-applications-en) on Slid.es (press spacebar to change slides)
 - [View](http://www.slideshare.net/dcslides/single-page-applications-english) on Slideshare
 
